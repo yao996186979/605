@@ -1,0 +1,51 @@
+<!--pages/controller/controller.wxml-->
+<picker mode="date" value="{{date1}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChange">
+    <view class="form_group">
+        <text>放假时间(点击选择)：</text>
+        <text class="textss" style="width:460rpx;text-align:left;">{{date1}}</text>
+    </view>
+  </picker>
+  <picker mode="date" value="{{date2}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChangeTwo">
+    <view class="form_group">
+        <text>上班时间(点击选择)：</text>
+        <text class="textss" style="width:460rpx;text-align:left;">{{date2}}</text>
+    </view>
+  </picker>
+  
+  <view class='submit'>
+
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}" wx:key="{{items}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+
+  <text>备注:</text>
+  <input bindinput='noteChange' placeholder='请输入具体想去的地方'></input>
+  
+  <button bindtap='submit'>确认提交</button>
+  </view>
+
+
+ <view class="table">
+  <view class="tr bg-w">
+    <view class="th_name">名称</view>
+    <view class="th_date">放假时间</view>
+    <view class="th_date">上班时间</view>
+    <view class="th_place">地方</view>
+  </view>
+  <block wx:for="{{listData}}" wx:key="{{code}}">
+    <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+      <view class="td_name">{{item.nickName}}</view>
+      <view class="td_date">{{item.startDate}}</view>
+      <view class="td_date">{{item.endDate}}</view>
+      <view class="td_place">{{item.place}}+{{item.note}}</view>
+    </view>
+    <view class="tr" wx:else>
+      <view class="td_name">{{item.nickName}}</view>
+      <view class="td_date">{{item.startDate}}</view>
+      <view class="td_date">{{item.endDate}}</view>
+      <view class="td_place">{{item.place}}+{{item.note}}</view>
+    </view>
+  </block>
+</view>
