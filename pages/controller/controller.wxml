@@ -1,5 +1,5 @@
 <!--pages/controller/controller.wxml-->
-<picker mode="date" value="{{date1}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChange">
+<!-- <picker mode="date" value="{{date1}}" start="2010-01-01" end="2030-12-31" bindchange="bindDateChange">
     <view class="form_group">
         <text>放假时间(点击选择)：</text>
         <text class="textss" style="width:460rpx;text-align:left;">{{date1}}</text>
@@ -10,24 +10,38 @@
         <text>上班时间(点击选择)：</text>
         <text class="textss" style="width:460rpx;text-align:left;">{{date2}}</text>
     </view>
-  </picker>
+  </picker> -->
   
   <view class='submit'>
-
-  <radio-group class="radio-group" bindchange="radioChange">
+  <text class='titleText'>1.过年谁来做年夜饭的主厨?</text>
+  <radio-group class="radio-group" bindchange="radioChange" id = "radioChange_01" >
     <label class="radio" wx:for="{{items}}" wx:key="{{items}}">
-        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
     </label>
-</radio-group>
+  </radio-group>
 
-  <text>备注:</text>
-  <input bindinput='noteChange' placeholder='请输入具体想去的地方'></input>
-  
-  <button bindtap='submit'>确认提交</button>
+  <text class='titleText'>2.过年你最想吃的菜是什么？</text>
+  <input class='inputText' bindinput='noteChange' placeholder='请输入你最想吃的菜'></input>  
+
+
+   <text class='titleText'>3.过年最想的展开的家庭活动是?</text>
+  <radio-group class="radio-group" bindchange="radioChange" id = "radioChange_02">
+    <label class="radio_1" wx:for="{{itemss}}" wx:key="{{itemss}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+    </label>
+  </radio-group>
+
+   <text class='titleText'>4.过年最受欢迎的人是谁?</text>
+  <radio-group class="radio-group" bindchange="radioChange" id = "radioChange_03">
+    <label class="radio_1" wx:for="{{itemsss}}" wx:key="{{itemsss}}">
+        <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+    </label>
+  </radio-group>
+  <button bindtap='submitTap'>确认提交</button>
   </view>
 
 
- <view class="table">
+ <!-- <view class="table">
   <view class="tr bg-w">
     <view class="th_name">名称</view>
     <view class="th_date">放假时间</view>
@@ -48,4 +62,4 @@
       <view class="td_place">{{item.place}}+{{item.note}}</view>
     </view>
   </block>
-</view>
+</view> -->

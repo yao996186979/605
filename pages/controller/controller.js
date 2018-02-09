@@ -1,10 +1,16 @@
 // pages/controller/controller.js
  const LC  = require('../../utils/av-weapp-min.js');
+ 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    cookName:null,
+    friutsName:null,
+    actionName:null,
+    cuteName:null,
+
     startDate: null,
     endDate: null,
     name: null,
@@ -13,9 +19,19 @@ Page({
     imgUrl: null,
     listData: null,
     items: [
-      { name: '宝鸡', value: '宝鸡' },
-      { name: '西安', value: '西安' },
-      { name: '富平', value: '富平', checked: 'true' }
+      { name: '姚福建', value: 0},
+      { name: '姚建全', value: 1},
+      { name: '其它', value: 2 }
+    ],
+    itemss: [
+      { name: '谝一谝', value: 0},
+      { name: 'K歌', value: 1 },
+      { name: '麻将', value: 2 },
+      { name: '其它', value: 3 }
+    ],
+    itemsss: [
+      { name: '六六', value: 0 },
+      { name: '姐姐的儿子', value: 1 },
     ]
   },
   //为picker绑定方法： 其中获得的时间为2017-06-01格式的。
@@ -36,13 +52,56 @@ Page({
     console.log(that.data.date2);
   },
   noteChange:function(e){
-    this.note = e.detail.value
+    this.friutsName = e.detail.value
   },
+
   radioChange: function (e) {
-    this.place = e.detail.value
-    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    console.log(e.detail.value);
+    if (e.currentTarget.id == "radioChange_01"){
+      this.cookName = parseInt(e.detail.value);
+    }
+    else if (e.currentTarget.id == "radioChange_02")
+    {
+      this.actionName = e.detail.value;
+    }
+    else{
+      this.cuteName = e.detail.value;
+    }
   },
- 
+  submitTap:function(e){
+    
+    if (this.friutsName == null || this.cookName == null || this.actionName == null || this.cuteName == null){
+     
+      wx.showModal({
+        content: "有内容没输入哦",
+        showCancel: false
+      });
+    }
+    else{
+      var that = this;
+      var User = LC.Object.extend('homeInfo');
+      var user = new User();
+      user.set('cookName', this.cookName);
+      user.set('friutsName', this.friutsName);
+      user.set('actionName', this.actionName);
+      user.set('cuteName', this.cuteName);
+      user.set('nickName', getApp().globalData.userInfo.nickName);
+      user.save().then(function (todo) {
+        // 成功保存之后，执行其他逻辑.
+        console.log('New object created with objectId: ' + user.id);
+        wx.showToast({
+          icon: 'success',
+          duration: 1000
+        })
+        wx.redirectTo({
+          url: '../infoShow/infoShow'
+        })
+      }, function (error) {
+        // 异常处理
+      });
+    }
+
+  },
   submit:function(e){
      //先查询此用户是否有记录  暂时用昵称
     // console.log(getApp().globalData.userInfo);

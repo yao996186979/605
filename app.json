@@ -2,7 +2,9 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/controller/controller"
+    "pages/controller/controller",
+    "pages/infoShow/infoShow"
+    
   ],
   "window":{
     "backgroundTextStyle":"light",

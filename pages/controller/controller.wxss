@@ -1,10 +1,31 @@
 /* pages/controller/controller.wxss */
+
+.titleText {
+  display: block;
+  border: 1px solid lightcoral;
+  width: 100%;
+  color: lightcoral;
+  padding-left: 10px;
+} 
  
-.titleName {
- width: 100%;
- height: 4rem;
- align-items: center;
+.inputText{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
+.submit{
+  width: 100%;
+  border: 1px solid gainsboro;
+}
+ .th_date
+.radio-group{
+
+padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+ 
 .form_group {
    background-color: chartreuse;
 }

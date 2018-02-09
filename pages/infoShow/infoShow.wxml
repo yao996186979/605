@@ -1,0 +1,18 @@
+<!--pages/infoShow/infoShow.wxml-->
+<text>主厨</text>
+<view class='back'>
+<canvas canvas-id="pieCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>
+<text>菜名</text>
+<view class='back'>
+<canvas canvas-id="radarCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>
+<text>活动</text>
+<view class='back'>
+<canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>
+<text>最受欢迎的人</text>
+<view class='back'>
+<canvas canvas-id="ringCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>
+<view><text>{{peoples}}</text></view>

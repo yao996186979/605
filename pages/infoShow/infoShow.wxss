@@ -1,0 +1,12 @@
+/* pages/infoShow/infoShow.wxss */
+ .back{
+ height: 250px;
+ width: 100%;
+ border: 1px goldenrod solid;
+ 
+ }
+ .canvas{
+   border: 1px grey solid;
+   height: 100%;
+   width: 100%;
+ }

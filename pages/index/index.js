@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+const LC = require('../../utils/av-weapp-min.js');
 const app = getApp()
 
 Page({
@@ -18,9 +19,26 @@ Page({
   },
   //进入605
   goNext: function(){
-    wx.navigateTo({
-      url: '../controller/controller'
-    })
+    //  此处判断有没有提交过，没有的话进提交页，提交过的直接查看结果集
+    var that = this;
+    var judgeQuery = new LC.Query('homeInfo');
+    judgeQuery.equalTo('nickName', getApp().globalData.userInfo.nickName);
+    judgeQuery.find().then(function (results) {
+      if (results.length != 0) {
+        //已经提交过了 直接查看
+        wx.navigateTo({
+          url: '../infoShow/infoShow'
+        })
+        
+      }
+      else {
+        wx.navigateTo({
+          url: '../controller/controller'
+        })
+      }
+    }, function (error) {
+    });
+   
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
